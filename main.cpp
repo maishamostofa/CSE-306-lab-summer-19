@@ -3,19 +3,19 @@
 #include<cstdlib>
 #include<ctime>
 using namespace std;
-void bubble_sort(int arr[],int n)
+void insertion_sort(int arr[],int n)
 {
-    for(int i=0;i<n-1;i++)
+    int i,key,index;
+    for(i=1;i<n;i++)
     {
-        for(int j=0;j<n-1;j++)
-        {
-            if(arr[j]>arr[j+1])
-            {
-                int temp=arr[j];
-                arr[j]=arr[j+1];
-                arr[j+1]=temp;
-            }
-        }
+      key=arr[i];
+      index=i-1;
+      while((index>=0) &&  (arr[index]>key))
+      {
+          arr[index+1]=arr[index];
+          index=index-1;
+      }
+      arr[index+1]=key;
     }
 }
 int main()
@@ -29,14 +29,13 @@ int main()
     {
         Array[i]=rand();
         fileInput<<i+1<<") "<<Array[i]<<endl;
-
     }
     fileInput.close();
     clock_t startTime=clock();
-    bubble_sort(Array,n);
+    insertion_sort(Array,n);
     clock_t endTime=clock();
     ofstream fileOutput;
-    fileOutput.open("Output1(10000).txt");
+    fileOutput.open("Output2(10000).txt");
     for(int i=0;i<n;i++)
     {
         fileOutput<<i+1<<") "<<Array[i]<<endl;
