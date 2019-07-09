@@ -55,10 +55,10 @@ void merge_sort(int arr[],int x,int z)
 
 int main()
 {
-    int n=10000;
+    int n=100000;
     ofstream fileInput;
     srand(89345);
-    fileInput.open("Input(10000).txt");
+    fileInput.open("Input(100000).txt");
     int*Array=new int[n];
     for(int i=0;i<n;i++)
     {
@@ -70,7 +70,7 @@ int main()
     merge_sort(Array, 0, n-1);
     clock_t endTime=clock();
     ofstream fileOutput;
-    fileOutput.open("Output3(10000).txt");
+    fileOutput.open("Output(100000).txt");
     for(int i=0;i<n;i++)
     {
         fileOutput<<i+1<<") "<<Array[i]<<endl;
