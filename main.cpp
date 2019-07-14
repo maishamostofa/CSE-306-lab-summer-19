@@ -1,35 +1,57 @@
 #include <iostream>
-#include<fstream>
-using namespace std;
 
+using namespace std;
+void maximum(int cointype[], int n, int value)
+{
+    int i, j, Count=0;
+    for(i=0; i<n; i++)
+    {
+        if(value>=cointype[i])
+        {
+            value=value-cointype[i];
+            cout<<cointype[i]<<" ";
+            Count++;
+        }
+
+    }
+    cout<<endl<<"Maximum number of coins: "<<Count<<endl;
+    cout<<endl;
+}
+void minimum(int cointype[], int n, int value)
+{
+    int i, j, Count=0;
+    for(i=n-1; i>0; i--)
+    {
+        if(value>=cointype[i])
+        {
+            value=value-cointype[i];
+            cout<<cointype[i]<<" ";
+            Count++;
+
+        }
+
+    }
+    cout<<endl<<"Minimum number of coins: "<<Count<<endl;
+    cout<<endl;
+}
 int main()
 {
-    int row, column;
-    ifstream fileInput;
-    fileInput.open("Input.txt");
-    fileInput>>row>>column;
-    int **Array;
-    Array=new int*[row];
-    for(int i=0; i<row; i++)
+    int i, j, k=0, value=50, n=10, cointype[10];
+    int coins[4]={5, 10, 20, 25};
+    int numberOfCoin[4]={2, 3, 3, 2};
+    cout<<"The coins are: ";
+    for(i=0; i<4; i++)
     {
-        Array[i]=new int[column];
-    }
-    for(int i=0; i<row; i++)
-    {
-        for(int j=0; j<column; j++)
+        for(j=0; j<numberOfCoin[i]; j++)
         {
-            fileInput>>Array[i][j];
+            cointype[k]=coins[i];
+            cout<< cointype[k]<<" ";
+            k++;
         }
     }
-    ofstream fileOutput;
-    fileOutput.open("Output.txt");
-    for(int i=0; i<column; i++)
-    {
-        for(int j=0; j<row; j++)
-        {
-            fileOutput<<Array[j][i]<<" ";
-        }
-        fileOutput<<endl;
-    }
+    cout<<endl<<endl<<"The coins are: ";
+    minimum(cointype, n, value);
+    cout<<endl<<endl<<"The coins are: ";
+    maximum(cointype, n, value);
     return 0;
 }
